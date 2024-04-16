@@ -1,0 +1,64 @@
+.book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgb(134, 134, 249);
+    padding: 1%;
+    min-width: 450px;
+    justify-content: space-around;
+}
+
+.book-details svg{
+    cursor: pointer;
+}
+
+.book-details p,
+.book-details h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.book-details textarea {
+    color: black;
+}
+
+.title,
+.price,
+.category,
+label {
+    width: max-content;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+label {
+    color: white;
+}
+
+.description {
+    width: 90%;
+    min-height: 150px;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.update-button,
+.add-button {
+    border-radius: 10px;
+    cursor: pointer;
+    min-width: 50px;
+    height: 50px;
+    background: rgb(134, 249, 201);
+    color: black;
+    transition: all 0.3s ease-in-out;
+    color: black;
+    border: none;
+    width: max-content;
+}
+
+.update-button:hover,
+.add-button:hover {
+    background: rgb(48, 251, 166);
+}

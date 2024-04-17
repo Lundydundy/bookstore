@@ -12,6 +12,8 @@
     margin-right: auto;
     width: clamp(200px, 80%, 550px);
     top: 10%;
+    border-radius: 10px;
+    border: 1px solid black;
 
 }
 

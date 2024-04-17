@@ -18,6 +18,9 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
+        <head>
+          <title>Book Store</title>
+        </head>
         <body>
           <header style={{background : "lightblue"
             }}>

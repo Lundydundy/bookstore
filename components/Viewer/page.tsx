@@ -25,25 +25,16 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
     }
 
     const handleAddBook = (details: any) => {
-        if (details.name && details.price && details.category && details.description) {
+        if (!details.name || !details.price || !details.category || !details.description) return;
 
-            dispatch(addBook(details));
+        dispatch(addBook(details));
             setModelView("none");
-        }
 
     }
 
 
     useEffect(() => {
-        if (book) {
-            setBookDetails({
-                id: book.id,
-                name: book.name,
-                category: book.category,
-                price: book.price,
-                description: book.description
-            });
-        } else{
+        if (mode !== "edit") {
             setBookDetails({
                 id: "",
                 name: '',
@@ -51,8 +42,17 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
                 price: '',
                 description: ''
             });
+        } else{
+            setBookDetails({
+                id: book.id,
+                name: book.name,
+                category: book.category,
+                price: book.price,
+                description: book.description
+                
+            });
         }
-    }, [book]);
+    }, [book, mode]);
 
     const handleTitleChange = (e: any) => {
         setBookDetails({ ...bookDetails, name: e.target.value })
@@ -78,6 +78,7 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
         setModelView("none");
     }
 
+    console.log(mode)
     console.log(bookDetails)
     if (mode === "edit") {
         return (
@@ -99,20 +100,20 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
             </div>
         )
     } else {
-      
+        
         return (
             <div style={{ display: view }} className="book-details">
                 <svg style={{ alignSelf: "end" }} onClick={handleModalView} className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                 </svg>
                 <label>Title</label>
-                <input required onChange={handleTitleChange} value="" className="title" />
+                <input required onChange={handleTitleChange} className="title" value={bookDetails?.name} />
                 <label>Price</label>
-                <input type="number" required onChange={handlePriceChange} value="" className="price" />
+                <input type="number" required onChange={handlePriceChange} className="price" value={bookDetails?.price} />
                 <label>Category</label>
-                <input required onChange={handleCategoryChange} value="" className="category" />
+                <input required onChange={handleCategoryChange} className="category" value={bookDetails?.category} />
                 <label>Description</label>
-                <textarea required onChange={handleDescriptionChange} value="" className="description" />
+                <textarea required onChange={handleDescriptionChange} className="description" value={bookDetails?.description}/>
 
                 <button className="add-button" onClick={() => handleAddBook(bookDetails)}>Add</button>
 

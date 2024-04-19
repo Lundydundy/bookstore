@@ -32,7 +32,6 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
 
     }
 
-
     useEffect(() => {
         if (mode !== "edit") {
             setBookDetails({
@@ -42,7 +41,7 @@ const Viewer = ({ books, bookId, view, setModelView, mode }: any) => {
                 price: '',
                 description: ''
             });
-        } else{
+        } else if (book){
             setBookDetails({
                 id: book.id,
                 name: book.name,
